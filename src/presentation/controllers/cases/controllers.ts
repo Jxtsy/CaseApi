@@ -71,25 +71,29 @@ export class CaseController {
         }
     }
 
-    // public getRecordsFromLastWeek = async (req: Request, res: Response) => {
-    //     try {
-    //         const today = new Date()
-    //         const date = today.toLocaleDateString();
+    public getCasesFromLastWeek = async (req: Request, res: Response) => {
+        try {
+            const today = new Date();
+            
+            const lastWeekStart = new Date();
+            lastWeekStart.setDate(today.getDate() - 7);
+            
+            const startOfLastWeek = new Date(lastWeekStart.setHours(0, 0, 0, 0)); 
+            const endOfLastWeek = new Date(today.setHours(23, 59, 59, 999)); 
 
-    //         const before = new Date(today);
-    //         before.setDate(today.getDate() - 1);
+            const cases = await CaseModel.find({
+                creationDate: {
+                    $gte: startOfLastWeek,
+                    $lte: endOfLastWeek
+                }
+            });
 
-    //         const registros = await CaseModel.find({
-    //             creationDate: {
-    //                 $gte: before, 
-    //                 $lt: today       
-    //             }
-    //         }); 
-    //         return res.json(registros)
+            return res.json(cases);
+        } catch (error) {
+            return res.status(500).json({ message: "An error occurred while retrieving cases from last week." });
+        }
+    }
 
-    //     } catch (error) {
-    //         return res.json({message: "Error retrieving records"})
-    //     }
-    // }
+   
 }
 
