@@ -7,7 +7,7 @@ import { CaseController } from "../../presentation/controllers/cases/controllers
 
 export const emailJob = ()=>{
     const emailService = new EmailService();
-    cron.schedule("*/20 * * * * *", async ()=>{
+    cron.schedule("*/10 * * * * *", async ()=>{
         try {
             const cases = await CaseModel.find({isEmailSent:false})
             if(!cases.length){
