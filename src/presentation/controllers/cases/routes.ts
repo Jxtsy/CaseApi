@@ -12,6 +12,7 @@ export class CaseRoutes{
         router.post("/", controller.createCase);
         router.put("/:id", controller.updateCase);
         router.delete("/:id", controller.updateCase);
+       // router.get("/lastweek", controller.getRecordsFromLastWeek);
         return router;
 
     }

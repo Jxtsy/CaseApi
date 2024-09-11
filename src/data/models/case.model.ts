@@ -1,17 +1,13 @@
 import mongoose from "mongoose";
 
 const caseSchema = new mongoose.Schema({
-    lat: {
-        type: Number,
+    name:{
+        type: String,
         required: true
     },
-    lng: {
-        type: Number,
+    lastname:{
+        type:String,
         required: true
-    },
-    isEmailSent: {
-        type: Boolean,
-        default: false
     },
     genre: {
         type: String,
@@ -28,7 +24,19 @@ const caseSchema = new mongoose.Schema({
     creationDate: {
         type: Date,
         default: Date.now, // Establecer fecha actual por defecto
-    }
+    },
+    lat: {
+        type: Number,
+        required: true
+    },
+    lng: {
+        type: Number,
+        required: true
+    },
+    isEmailSent: {
+        type: Boolean,
+        default: false
+    },
 });
 
 export const CaseModel = mongoose.model("Case", caseSchema)

@@ -3,7 +3,7 @@ import 'dotenv/config';
 import { envs } from './config/envs.plugin';
 import { AppRoutes } from './presentation/routes';
 import { MongoDatabase } from './data/init';
-//import { emailJob } from './domain/jobs/email.job';
+import { emailJob } from './domain/jobs/email.job';
 
 
 const app = express();
@@ -16,5 +16,5 @@ app.use(AppRoutes.routes);
 
 app.listen(envs.PORT, () => {
   console.log("Server started")
-  //emailJob()
+  emailJob()
 })
