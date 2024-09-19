@@ -64,7 +64,7 @@ export class CaseController {
     public deteleCase = async (req: Request, res: Response) => {
         try {
             const { id } = req.params;
-            const deleteCase = CaseModel.findByIdAndDelete(id);
+            const deleteCase = await CaseModel.findByIdAndDelete(id);
             return res.json(deleteCase)
         } catch (error) {
             return res.json({ message: "An error occurred while deleting the case." })

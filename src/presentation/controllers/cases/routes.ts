@@ -12,7 +12,7 @@ export class CaseRoutes{
         router.get("/:id", controller.getCaseById);
         router.post("/", controller.createCase);
         router.put("/:id", controller.updateCase);
-        router.delete("/:id", controller.updateCase);
+        router.delete("/:id", controller.deteleCase);
       
         return router;
 
